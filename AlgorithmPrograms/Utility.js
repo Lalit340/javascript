@@ -589,16 +589,15 @@ getDayOfWeek(y ,m ,d){
 
    getBinary(num){
 
-      
-         var str = num.toString();
-         var bin = (+str).toString(2);
-         var s = " ";
+      var bin , fb = [] ,lb = [] ,newbin =[] ,digit ,
+     //   var str = num.toString();
+          bin = (+num).toString(2);
          console.log(bin);
-         let fb = bin.slice(0, 4);
-         let lb = bin.slice(4);
-         let newbin = lb + fb;
+          fb = bin.slice(0, 4);
+          lb = bin.slice(4);
+         newbin = lb + fb;
          console.log(newbin);
-         var digit = parseInt(newbin, 2);
+         digit = parseInt(newbin, 2);
          console.log(digit);
        
 
