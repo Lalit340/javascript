@@ -423,6 +423,7 @@ sort(arr) {
 
       merge(left , right){
          var i=0 ,j=0 ,result =[];
+      
          while (i < left.length && j < right.length) {
             if (parseInt(left[i]) < parseInt(right[j])) {
             result.push(parseInt(left[i]));
@@ -510,6 +511,100 @@ getDayOfWeek(y ,m ,d){
 
 
        }, //getPayment()
+
+
+
+   
+
+/***********************************************************************************
+ * 
+ ****************  For Squar Root of A number Calculation  **********************************
+ *
+ * *************************************************************************************/
+
+
+    getRoot(c){
+       var t = c;
+       var epsilon = 1e-15 ;
+
+      if(Math.abs(t - c /t) > epsilon * t ){
+          t = (c / t + t )/2
+     
+      }
+      return t ;
+    } ,// getRoot();
+
+
+
+   
+
+/***********************************************************************************
+ * 
+ ****************  For copnverting Decimal number to Binary Calculation  **********************************
+ *
+ * *************************************************************************************/
+
+
+        getToBinary(n){
+           let str , byn ,p;
+            str = n.toString();
+            byn = (+str).toString(2);
+            console.log(byn);
+
+           this.getToDecimal(byn);
+
+      //     p= parseInt(byn , 2);
+      //     console.log('new '+p);
+        },//getToBinary()
+
+        getToDecimal(byn){
+            let j , i, s ='' , or =0 
+             j  = byn.length - 1;
+            console.log(j);
+
+            for ( i = 0; i < byn.length ; i++) {
+             res = Math.floor(Math.pow(2, j));
+               
+               if (byn[i] == 1) {
+               s = s + res + '+';
+               or =or + res;
+               byn.length--;
+               j--;
+               } else {
+               s = "" + s;
+               byn.length--;
+               j--;
+               }
+               
+            } 
+            console.log(byn+ ' is '+s +' and '+or);
+        },//getToDecimal()(+byn).toString(8);
+
+/****************************(+byn).toString(8);*******************************************************
+ * (+byn).toString(8);
+ ****************  For copnve(+byn).toString(8);rting Decimal number to Binary Calculation  **********************************
+ *(+byn).toString(8);
+ * **************************(+byn).toString(8);***********************************************************/
+
+
+   getBinary(num){
+
+      
+         var str = num.toString();
+         var bin = (+str).toString(2);
+         var s = " ";
+         console.log(bin);
+         let fb = bin.slice(0, 4);
+         let lb = bin.slice(4);
+         let newbin = lb + fb;
+         console.log(newbin);
+         var digit = parseInt(newbin, 2);
+         console.log(digit);
+       
+
+
+   },//getBinary(n)
+
 
 
 

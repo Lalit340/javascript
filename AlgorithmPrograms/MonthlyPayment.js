@@ -1,7 +1,7 @@
 
 
 /*****************************************************************
- * @purpose ::  For finding  Day Of the date 
+ * @purpose ::  For finding  Monthly Payment 
  * @author  :: Lalit Pradhan
  * @version :: 1.0.0
  * @Since   :: 08-03-19
