@@ -24,7 +24,7 @@ module.exports = {
         var tailPer=0;
         var no=fp;
         if(fp>10 || fp<=0){
-          console.log('Enter a number in between 1 to 10 only');
+          throw 'Enter a number in between 1 to 10 only';
         }
         else{
             for(i=1;i<=no;i++){
@@ -345,8 +345,13 @@ module.exports = {
                        i = rd.question('Enter row number whwre u want to put ur turn :: ')-1;
                        j = rd.question('Enter column number where u want to put ur turn :: ')-1;
                     
-
+                       //if condition for find the place is empty or not .
+                       if(board[i][j] == '_'){
                         board[i][j] = turn;
+                        }else{
+                            console.log('Enter valid input ::');
+                            continue ;
+                        }
 
                         if(this.gameOver(i , j ,board)){
                            player = false ;

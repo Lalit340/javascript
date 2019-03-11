@@ -116,7 +116,7 @@ module.exports ={
    
    palindromAnagram(ch){
     var len = ch.length;
-    var i; 
+    var i ,j; 
      
     for(i = 0;i < len-1 ; i++){
        
