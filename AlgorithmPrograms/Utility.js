@@ -480,9 +480,9 @@ getDayOfWeek(y ,m ,d){
 
    m0 = m + 12 * parseInt(((14 - m) / 12)) - 2 ;
    m0 = parseInt(m0);
-   d0 = Math.floor((d + x + 31 * parseInt(m0 / 12)) % 7);
-   //d0 = perseInt(d0);
-   console.log(d0);
+   d0 = Math.floor(((d + x + 31 * parseInt(m0 / 12)) % 7)+1);
+
+  // console.log(d0);
    return d0 ;
 
 } ,//getDayOfWeek()
@@ -578,13 +578,13 @@ getDayOfWeek(y ,m ,d){
                
             } 
             console.log(byn+ ' is '+s +' and '+or);
-        },//getToDecimal()(+byn).toString(8);
+        },//getToDecimal()
 
-/****************************(+byn).toString(8);*******************************************************
- * (+byn).toString(8);
- ****************  For copnve(+byn).toString(8);rting Decimal number to Binary Calculation  **********************************
- *(+byn).toString(8);
- * **************************(+byn).toString(8);***********************************************************/
+/***********************************************************************************
+ * 
+ ****************  For copnverting Decimal number to Binary Calculation  **********************************
+ *
+ * *************************************************************************************/
 
 
    getBinary(num){
