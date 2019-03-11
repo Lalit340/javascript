@@ -9,7 +9,7 @@
 var ul = require('./Utility');
 var rd = require('readline-sync');
 
-var flipCion=rd.question('enter a number ::');
+var flipCoin=rd.question('enter a number ::');
 
 //calling supper method 
-ul.flipCoin(flipCion);
+ul.flipCoin(flipCoin);
