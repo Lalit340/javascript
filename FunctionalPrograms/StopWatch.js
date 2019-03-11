@@ -34,8 +34,8 @@
 
            t= getElapsedTime();
 
-           console.log('time with milliSecond :: '+t);
-           console.log('time with seconds  :: '+t/1000);
+           console.log('time with milliSecond :: '+t*1000);
+           console.log('time with seconds  :: '+t);
 
      }catch(err){
          console.log(err);

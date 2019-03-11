@@ -123,7 +123,7 @@ module.exports ={
       for(j=i+1 ; j < len ;j++){
        
         if(this.isSingle(ch[i])){
-          if(this.findAnagram(ch[i].toString() , ch[j].toString() )) {
+          if(this.findAnagram(ch[i] , ch[j] )) {
                if(this.getPalindrome(ch[i].toString(), ch[j].toString())){
                  console.log(ch[i]+'  and '+ch[j]+' are palindrome');
                }
