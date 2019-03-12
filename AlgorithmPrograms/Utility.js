@@ -162,10 +162,9 @@ isSingle(chs){
    getCelsius(temp ,t){
       var cel;
    if( t == 'c' || t == 'C'){
-
-      cel = (temp *(5/9)) + 32;
-   }else{
       cel = (temp - 32)*(5/9);
+   }else{
+      cel = (temp *(5/9)) + 32;
    }
       return cel ;
    },//getCelsius()

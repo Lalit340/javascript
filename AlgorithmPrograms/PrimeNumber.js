@@ -17,7 +17,8 @@ function getPrime(){
        var num = rd.question('Enter a integer  number ::');
        if(num >= 1 ){
            //call super method
-           ul.getPrimeNumber(num);
+          var p =  ul.getPrimeNumber(num);
+          console.log('all prime numbers :: '+p)
        }else{
            throw 'enter a valid number';
        }
