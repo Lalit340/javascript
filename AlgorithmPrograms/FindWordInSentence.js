@@ -8,7 +8,7 @@
 
 var ul = require('./Utility');
 var rd = require('readline-sync');
-
+var file = require('fs');
 
 //call function
 findWord();
@@ -16,11 +16,12 @@ findWord();
 function findWord(){
     var n , i ,array = [] ,search;
      try{
-         n  = rd.question('Enter Sentence of words value :: ');
-         n = n.trim();
+         n  = file.readFileSync('WordFile.txt' ,'utf-8');
+         console.log(n);
+         //n = n.trim();
          array = n.split(' ');
   
-         search = rd.question('Enter Which value want to search ');
+         search = rd.question('Enter Which value want to search :: ');
 
          //call super method for search value
          ul.binarySearchString(array , search);

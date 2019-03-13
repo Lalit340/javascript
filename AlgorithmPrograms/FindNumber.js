@@ -8,7 +8,7 @@
 
 var ul = require('./Utility');
 var rd = require('readline-sync');
-
+var file = require('fs');
 
 //call function
 findNumber();
@@ -16,12 +16,11 @@ findNumber();
 function findNumber(){
     var n , i ,array = [] ,search;
      try{
-         n  = rd.question('Enter array value :: ');
-         for(i = 0 ;i < n ; i++){
-             array[i] =  i+1;
-         }
+        n  = file.readFileSync('NumberFile.txt' ,'utf-8');
+        console.log(n);
+        array = n.split(' ');
         
-         search = rd.question('Enter Which value want to search ');
+         search = rd.question('Enter Which value want to search :: ');
 
          //call super method for search value
          ul.binarySearchInt(array , search);

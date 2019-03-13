@@ -1,217 +1,367 @@
 
-
-
-
+var ul = require('./Utility');
+var list = require('./LinkedList');
 var rd = require('readline-sync');
-
-
 
 // User defined class node 
 class Node {
-    // constructor 
-    constructor(element) {
-        this.element = element;
-        this.next = null
-    }
-}
 
-// user dafine LinkedList class
+    constructor(data) {
+
+        this.data = data;
+
+        this.next = null;
+
+    }
+
+}
+// linkedlist class 
 class LinkedList {
 
-    //constructor
     constructor() {
-        this.length = 0;
-        this.head = null;
+
+        this.first = null;
+
+        this.size = 0;
+
+
+
     }
 
-    //add method for adding elements
-    add(val) {
-        var  n, current ;
-        
-        n = new Node(val);
+  
 
-        if (this.head == null) {
-            this.head = n;
+    search(item) {
+        //check the first node is empty or not
+        if (this.first == null) {
+
+            return false;
+
+        }
+
+
+        var temp = this.first;
+
+        while (temp) {
+
+            if (temp.data == item) {
+                //item is found
+                return true;
+
+            }
+
+            // not found then search next node.
+            temp = temp.next;
+
+        }
+
+        return false;
+
+    }
+
+    addToPos(data) {
+
+        var temp = this.first;
+
+        var prev = temp;
+
+
+        if (data < temp.data) {
+
+            this.insertFirst(data);
+
+            return
+
+        }
+
+        var node = new Node(data);
+
+        while (temp.next) {
+
+            if (temp.data < data) {
+
+                prev = temp;
+
+                temp = temp.next;
+
+            } else {
+
+                prev.next = node
+
+                node.next = temp
+
+
+                break;
+
+            }
+
+        }
+
+        if (!temp.next) {
+
+            temp.next = node;
+
+        }
+
+        this.size++;
+
+    }
+
+    remove(data) {
+
+
+        var temp = this.first;
+
+        if (temp.data == data) {
+
+            this.deleteFirst();
+
+            return;
+
+        }
+
+        var prev = temp;
+
+        while (temp) {
+
+            if (temp.data == data) {
+
+                prev.next = temp.next;
+
+                this.size--;
+
+                return temp.data;
+
+
+            }
+
+
+            prev = temp;
+
+            temp = temp.next;
+           
+
+        }
+
+        return null;
+
+    }
+
+    display() {
+
+        var temp = this.first;
+
+        var str = "";
+
+        while (temp) {
+
+            str = str + " " + temp.data;
+
+            temp = temp.next;
+
+        }
+
+        return str;
+
+    }
+
+    isEmpty() {
+
+        return this.size == 0;
+
+    }
+
+    insertFirst(element) {
+
+        var n = new Node(element);
+
+        if (this.first == null) {
+
+            this.first = n;
+
+            this.size++;
+
+            return;
 
         } else {
-             current = this.head;
-            while (current.next) {
-                current = current.next;
-            }//while
-            current.next = n;
 
-        }//alse
-        this.length++;
-    }//add
+            n.next = this.first;
 
-    size() {
-        return this.length;
-    }
+            this.first = n;
 
-
-    //Insert element s where you want of the list 
-    insert(element, index) {
-        var node, curr, it;
-        if (index > 0 && index > this.size)
-            return false;
-        else {
-            // creates a new node 
-            node = new Node(element);
-
-
-            curr = this.head;
-
-            // add the element to the 
-            // first index 
-            if (index == 0) {
-                node.next = head;
-                this.head = node;
-            } else {
-                curr = this.head;
-                it = 0;
-
-                // iterate over the list to find 
-                // the position to insert 
-                while (it < index) {
-                    it++;
-                    prev = curr;
-                    curr = curr.next;
-                }
-
-                // adding an element 
-                node.next = curr;
-                prev.next = node;
-            }
             this.size++;
-        }
-    }
 
+            return;
 
-
-
-    // removes an element from the 
-    // specified location 
-    removeFrom(index) {
-        if (index > 0 && index > this.size)
-            return -1;
-        else {
-            var curr, prev, it = 0;
-            curr = this.head;
-            prev = curr;
-
-            // deleting first element 
-            if (index === 0) {
-                this.head = curr.next;
-            } else {
-                // iterate over the list to the 
-                // position to removce an element 
-                while (it < index) {
-                    it++;
-                    prev = curr;
-                    curr = curr.next;
-                }
-
-                // remove the element 
-                prev.next = curr.next;
-            }
-            this.length--;
-
-            // return the remove element 
-            return curr.element;
-        }
-    }
-
-
-    // removes a given element from the 
-    // list 
-    remove(element) {
-        var current = this.head;
-        var prev = null;
-
-        // iterate over the list 
-        while (current != null) {
-            // comparing element with current 
-            // element if found then remove the 
-            // and return true 
-            if (current.element === element) {
-                if (prev == null) {
-                    this.head = current.next;
-                } else {
-                    prev.next = current.next;
-                }
-                this.length--;
-                return current.element;
-            }
-            prev = current;
-            current = current.next;
-        }
-        return -1;
-    }
-
-
-    // finds the index of element 
-    indexOf(element) {
-        var count = 0;
-        var current = this.head;
-
-        // iterae over the list 
-        while (current != null) {
-            // compare each element of the list 
-            // with given element 
-            if (current.element === element)
-                return count;
-            count++;
-            current = current.next;
         }
 
-        // not found 
-        return -1;
     }
 
-    //search method for searching an element
-    search(dt){
+    deleteFirst() {
 
-        var data ;
-        if(this.head == null)
-          return false;
+        if (this.first == null) {
 
-        //operation
-        data = this.head ;
-        while(data){
-            if(data == dt){
-                return true ;
-            }
-                data = this.head.next;
-           
-        }//while
+            return;
 
-          return false;
+        }
+
+        var n = this.first.data;
+
+        this.first = this.first.next;
+
+        this.size--;
+
+        return n;
+
     }
 
-    //is empty method for find the list empty or not
-    isEmpty() {
-        return this.length == 0;
-    }
-
-
-    // prints the list items 
     printList() {
-        var curr = this.head;
-        var str = "";
-        while (curr) {
-            str += curr.element + " ";
-            curr = curr.next;
-        }
-        return str;
-    }
-}
 
-module.exports={
+        try {
+
+            var curr = this.first;
+
+            var str = "";
+
+            while (curr) {
+
+                str += curr.data + " ";
+
+                curr = curr.next;
+
+            }
+
+            return str
+        } catch (error) {
+
+            console.log(error.message);
+
+        }
+
+    }
+
+    add(data) {
+
+        try {
+
+            var node = new Node(data);
+
+            var current = this.first;
+
+            if (this.first == null) {
+
+                this.first = node;
+
+            } else {
+
+                current = this.first;
+
+                while (current.next) {
+
+                    current = current.next;
+
+                }
+
+                current.next = node;
+
+            }
+
+            this.size++;
+
+        } catch (error) {
+
+            console.log(error.message);
+
+        }
+
+    }
+
+    removeItem(data) {
+
+        try {
+
+            var current = this.first;
+
+            var prev = null;
+
+
+
+            while (current != null) {
+
+
+
+                if (current.data == data) {
+
+                    if (prev == null) {
+
+                        this.first = current.next;
+
+                    } else {
+
+
+                        prev.next = current.next;
+
+                    }
+
+                    this.size--;
+
+                    return true;
+
+                }
+
+                prev = current;
+
+                current = current.next;
+
+            }
+
+            return false;
+
+        } catch (error) {
+
+            console.log(error.message);
+
+        }
+
+    }
+    sort() {
+
+        var temp;
+
+
+        temp = this.first;
+
+        var p = this.size;
+
+        while (p > 0) {
+
+            temp = this.first;
+
+
+            while (temp.next !== null) {
+
+                if (parseInt(temp.data) >parseInt(temp.next.data)) {
+
+                    var t = parseInt(temp.data);
+
+                    temp.data = parseInt(temp.next.data);
+
+                    temp.next.data = parseInt(t);
+
+                }
+
+                temp = temp.next;
+
+            }
+
+            p--;
+
+        }
+
+    }
+
+}
+module.exports = {
     LinkedList
 }
 
-var l = new LinkedList();
-
-l.add(10);
-console.log(l.search(10));
 
