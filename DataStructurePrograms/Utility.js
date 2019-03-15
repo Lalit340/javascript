@@ -5,8 +5,12 @@
 */
 
 var ul = require('./Utility');
+var aUl = require('../AlgorithmPrograms/Utility');
 var rd = require('readline-sync');
 var file = require('fs');
+var que = require('./Queue');
+var stk = require('./Stack');
+var up = require('util');
 
 module.exports = {
 
@@ -19,14 +23,234 @@ module.exports = {
         ***********************************************************************************/
 
        readSplit(text) {
-              var data, array = [];
+              var data, arrayay = [];
               data = file.readFileSync(text, 'utf-8');
-              array = data.split(' ');
-              console.log(array);
-              return array;
+              arrayay = data.split(' ');
+              console.log(arrayay);
+              return arrayay;
        },//readSplit()
 
 
 
-       
+       /*******************************************************************************
+     * 
+     * ************** using Stack Findind prime number and Anagram & Printing the numbers ***
+     * 
+     * 
+     ***********************************************************************************/
+
+
+
+
+       primeAnagramStack(num) {
+
+              var str, array = [], i, j, st, len, data;
+
+              //calling primeNumber method from utility of algorithms
+              str = aUl.getPrimeNumber(num);
+              str = str.trim();
+              array = str.split('  ');
+              //queue object creation
+              st = new stk.Stack();
+              //forloop for Storing anagrams numbers
+              for (i = 0; i < array.length - 1; i++) {
+                     for (j = i + 1; j < array.length; j++) {
+                            if (!aUl.isSingle(array[i])) {
+                                   if (aUl.findAnagram(array[i], array[j])) {
+                                          st.push(array[i]);
+                                          st.push(array[j]);
+                                   }
+                            }
+                     }
+              }
+
+              len = st.getSize();
+              console.log(len);
+              //forloop for printing anagrams
+              for (i = 0; i < len; i++) {
+                     data = st.pop();
+                     console.log('Anagram number is :: ' + data);
+              }
+
+       },//  primeAnagramStack(num)
+
+
+
+
+
+
+
+       /*******************************************************************************
+        * 
+        * ************** using Queue Findind prime number and Anagram Printing the numbers ***
+        * 
+        * 
+        ***********************************************************************************/
+
+
+       primeAnagram(num) {
+
+              var str, array = [], i, j, q, len, data;
+
+              //calling primeNumber method from utility of algorithms
+              str = aUl.getPrimeNumber(num);
+              str = str.trim();
+              array = str.split('  ');
+              //queue object creation
+              q = new que.Queue();
+              //forloop for Storing anagrams numbers
+              for (i = 0; i < array.length - 1; i++) {
+                     for (j = i + 1; j < array.length; j++) {
+                            if (!aUl.isSingle(array[i])) {
+                                   if (aUl.findAnagram(array[i], array[j])) {
+                                          q.enqueue(array[i]);
+                                          q.enqueue(array[j]);
+                                   }
+                            }
+                     }
+              }
+
+              len = q.getSize();
+              console.log(len);
+              //forloop for printing anagrams
+              for (i = 0; i < len; i++) {
+                     data = q.dequeue();
+                     console.log('Anagram number is :: ' + data);
+              }
+
+       },//  primeAnagram(num)
+
+
+       /*******************************************************************************
+        * 
+        * ************** For  Leap Year           ***
+        * 
+        * 
+        ***********************************************************************************/
+
+
+
+       leapYear(yr) {
+              if (yr % 4 == 0 && yr % 100 != 0 || yr % 400 == 0) {
+                     return true;
+              } else {
+                     return false;
+              }
+
+       },// leapYear(yr)
+
+
+       /*******************************************************************************
+        * 
+        * ************** For  Binary search Tree program    ************************
+        * 
+        * 
+        ***********************************************************************************/
+
+
+       binarySearchTree() {
+
+              var number, array = [], index, first, second, result;
+
+              number = rd.question('Enter a Number ::');
+              //incase if user not give a number it throw error
+              if (isNaN(number))
+                     throw 'ENTER A VALID NUMBER';
+
+              console.log('Enter your number ::');
+
+              for (index = 0; index < number; index++) {
+                     array[index] = rd.question('');
+
+                     if (isNaN(array[index]))
+                            throw 'Enter a integer value only ';
+              }
+
+              for (index = 0; index < array.length; index++) {
+                     first = (this.factorial(2 * Number(array[index])));
+                     second = Number((this.factorial(Number(array[index]) + 1)) * Number(this.factorial(array[index])));
+                     result = Math.floor(first / second);
+
+                     console.log('Node Possible Way making tree of  ' + array[index] + ' is ' + result);
+
+              }
+
+       },// binarySearchTree()
+
+       factorial(num) {
+              var i, mul = 1;
+              for (i = 1; i <= num; i++) {
+                     mul = mul * i;
+              }
+
+              return mul;
+       },// factorial(num)
+
+
+
+       /*******************************************************************************
+        * 
+        * ************** For  Search Prime Number and Anagram and printing the number in 2d************************
+        * 
+        * 
+        ***********************************************************************************/
+
+
+
+       getPrimeAnagram(num) {
+              var prime, i, j, range;
+              var array = [['0-100'], ['100-200'], ['200-300'], ['300-400'],
+              ['400-500'], ['500-600'], ['600-700'], ['700-800'], ['800-900'], ['900-1000']];
+              i = 0;
+              j = 1;
+              range = 100;
+
+
+              for (prime = 2; prime <= num; prime++) {
+                     if (this.getPrime(prime)) {
+                            if (prime < range) {
+                                   array[i][j] = prime;
+                                   j++;
+                            } else {
+                                   j = 1;
+                                   range += 100;
+                                   i++;
+                                   array[i][j] = prime;
+                            }
+                     }
+
+              }
+              console.log("The prime numbers are presents in the given range ");
+              console.log();
+              for (i = 0; i < array.length; i++) {
+                     up.print('[ ');
+                     for (j = 0; j < array[i].length; j++) {
+                            if (j == 0) {
+                                    up.print('[ '+array[i][j] + " ] ------>  ");
+                                 //  array.pop();
+                            } else {
+                                   up.print(array[i][j] + " ");
+                            }
+                     }
+                     console.log(' ]');
+              }
+
+
+       },//getPrimeAnagram(str)
+
+       getPrime(num) {
+              var i, temp = 0;
+              for (i = 2; i < num; i++) {
+                     if (num % i == 0) {
+                            temp += 1;
+                     }
+
+              }
+              if (temp == 0)
+                     return true;
+              else
+                     return false;
+       }
+
 }
+

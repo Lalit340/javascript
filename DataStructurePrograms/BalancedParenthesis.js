@@ -27,7 +27,7 @@ function EvalutionOfStack() {
     for (i = 0; i < len; i++) {
         ch = exp.charAt(i);
 
-        if (ch == '(' ) {
+        if (ch == '(') {
             stk.push(i);
         } else if(ch == ')'){
             stk.pop();

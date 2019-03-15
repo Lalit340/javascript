@@ -1,42 +1,78 @@
 
+
+//Node class
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
 //Stack class 
 class Stack {
     //constructor of stack class
     constructor() {
-        this.items = [];
+        this.top = null;
+        this.size = 0;
     }
     //push  method for adding an element  
-    push(element) {
-        this.items.push(element);
+    push(data) {
+        var node = new Node(data);
+        // it will add the data into stack 
+        if (this.isEmpty()) {//if the stack is empty the data will add as first node into the stack
+
+            this.top = node;//adding first data into stack
+            this.size++;
+            return;
+        }
+        else {
+
+            node.next = this.top;
+            this.top = node
+            this.size++
+        }
     }
 
     pop() {
-        if (this.items.length == 0)
-            return 'UnderFlow';
+        //return data which are in the stack
+        if (this.isEmpty()) {
+            return 'no data'
+        }
 
-        return this.items.pop();
+        var dat = this.top.data;
+        this.top = this.top.next;
+        this.size--;
+        //console.log("popped value "+dat);
+        return dat;
     }
 
     isEmpty() {
-        return this.items.length == 0;
+        //checking wether the stack contain any data if it is not return true
+        if (this.size === 0) {
+            return true;
+        }
+        else
+            return false
     }
 
     peek() {
-        return this.items[this.items.length - 1];
+        return this.top.data//return the top value i.e added in the last
     }
 
     print() {
-        var str = '', i;
-
-        for (i = 0; i < this.items.length; i++) {
-            str += this.items[i] + ' ';
+        var str = '';
+        //printing the values
+        var t = this.top;
+        while (t != null) {
+            str += t.data + '  ';
+            t = t.next;
         }
         return str;
-
     }
 
-    size(){
-        return this.items.length ;
+    getSize() {
+        //it returns the size of the Stack
+        return this.size;
     }
 
 }

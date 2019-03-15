@@ -92,21 +92,31 @@ module.exports = {
 
 
    getPalindrome(num1, num2) {
-      var rem, sum = '', temp = [], i, dem1, dem2;
+      var rem1, rem2 , sum1 = '' ,sum2 ='', temp1 = [],temp2 = [] , i, dem1, dem2 ,len1 ,len2;
       dem1 = num1 + '';
       dem2 = num2 + "";
-      temp = dem1.split('');
-      len = temp.length;
+      // for first variable
+      temp1 = dem1.split('');
+      len1 = temp1.length; 
+     // for second variable
+      temp2 = dem2.split('');
+      len2 = temp2.length;
+     //forloop for first string
+      for (i = 0; i < len1; i++) {
+         rem1 = dem1.charAt(i);
+         sum1 = '' + rem1 + sum1;
 
-      for (i = 0; i < len; i++) {
-         rem = dem1.charAt(i);
-         sum = '' + rem + sum;
-
+      }
+      //forloop for second string
+      for (i = 0; i < len1; i++) {
+         rem2 = dem2.charAt(i);
+         sum2 = '' + rem2 + sum2;
 
       }
 
+
       //console.log(sum)
-      if (sum == dem2)
+      if (sum1 == sum2)
          return true;
       else
          return false;
@@ -122,7 +132,7 @@ module.exports = {
 
          for (j = i + 1; j < len; j++) {
 
-            if (this.isSingle(ch[i])) {
+            if (!this.isSingle(ch[i])) {
                if (this.findAnagram(ch[i], ch[j])) {
                   if (this.getPalindrome(ch[i].toString(), ch[j].toString())) {
                      console.log(ch[i] + '  and ' + ch[j] + ' are palindrome');
@@ -142,9 +152,9 @@ module.exports = {
       num = array.length;
       //if condition for finding single or not 
       if (num == 1) {
-         return false;
-      } else
          return true;
+      } else
+         return false;
 
 
    },//isSingle()

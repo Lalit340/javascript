@@ -22,7 +22,7 @@ function checkPalindrome() {
     dq = new dque.Deque();
     try {
         palStr = rd.question('Enter a String ::');
-        if (!isNaN)
+        if (!isNaN(palStr))
             throw 'Enter  string value only';
 
         palStr = palStr.trim();

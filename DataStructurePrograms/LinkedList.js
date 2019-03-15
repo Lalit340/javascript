@@ -146,23 +146,7 @@ class LinkedList {
 
     }
 
-    display() {
 
-        var temp = this.first;
-
-        var str = "";
-
-        while (temp) {
-
-            str = str + " " + temp.data;
-
-            temp = temp.next;
-
-        }
-
-        return str;
-
-    }
 
     isEmpty() {
 
@@ -230,7 +214,7 @@ class LinkedList {
 
             }
 
-            return str
+          return str;
         } catch (error) {
 
             console.log(error.message);

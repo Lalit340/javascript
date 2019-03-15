@@ -30,7 +30,7 @@ function getList() {
             link.add(arr[i]);
         }
 
-        console.log(link.display());
+        console.log(link.printList());
 
         //read value form input
         val = rd.question('Enter a word ::');
@@ -42,7 +42,7 @@ function getList() {
             link.add(val);
         }
 
-        console.log(link.display());
+        console.log(link.printList());
     } catch (err) {
         console.log(err);
     }
