@@ -1,31 +1,31 @@
 
+
 /*****************************************************************
- * @purpose ::  For  Printing Prime Numbers  using 2D array
+ * @purpose ::  For Reading Data From JSON File
  *              
  * @author  :: Lalit Pradhan
  * @version :: 1.0.0
- * @Since   :: 15-03-19
+ * @Since   :: 18-03-19
  ****************************************************************/
 
 var ul = require('./Utility');
-var aUl = require('../AlgorithmPrograms/Utility');
 var rd = require('readline-sync');
 var up = require('util');
+var file = require('fs');
 
-//calling function
-printPrime();
+function inventory( ) {
 
-function printPrime() {
-
-    var num , arr =[];
+    var text ,object;
     try{
-    num = rd.question('Enter a number :: ');
-   
+        text = file.readFileSync("InventoryData.json");
+         object = JSON.parse(text);
 
-    ul.getPrime(num);
-  // console.log(arr);
+         ul.getInventory(object);
     }catch(err){
         console.log(err);
     }
     
 }
+
+//call function
+inventory();

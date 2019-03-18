@@ -213,7 +213,7 @@ module.exports = {
 
     /**************************************************************************
      * 
-     * *************2D Array program for reading 2 dimontional array values **
+     * *************** 2D Array program for reading 2 dimontional array values *****
      * 
      ************************************************************************/
 

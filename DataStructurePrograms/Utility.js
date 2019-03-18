@@ -190,14 +190,14 @@ module.exports = {
 
        /*******************************************************************************
         * 
-        * ************** For  Search Prime Number and Anagram and printing the number in 2d************************
+        * ************** For  Search Prime Number and printing the number in 2d************************
         * 
         * 
         ***********************************************************************************/
 
 
 
-       getPrimeAnagram(num) {
+       getPrime(num) {
               var prime, i, j, range;
               var array = [['0-100'], ['100-200'], ['200-300'], ['300-400'],
               ['400-500'], ['500-600'], ['600-700'], ['700-800'], ['800-900'], ['900-1000']];
@@ -207,7 +207,7 @@ module.exports = {
 
 
               for (prime = 2; prime <= num; prime++) {
-                     if (this.getPrime(prime)) {
+                     if (this.getPrimeNumber(prime)) {
                             if (prime < range) {
                                    array[i][j] = prime;
                                    j++;
@@ -226,8 +226,8 @@ module.exports = {
                      up.print('[ ');
                      for (j = 0; j < array[i].length; j++) {
                             if (j == 0) {
-                                    up.print('[ '+array[i][j] + " ] ------>  ");
-                                 //  array.pop();
+                                   up.print('[ ' + array[i][j] + " ] ------>  ");
+                                   //  array.pop();
                             } else {
                                    up.print(array[i][j] + " ");
                             }
@@ -238,7 +238,7 @@ module.exports = {
 
        },//getPrimeAnagram(str)
 
-       getPrime(num) {
+       getPrimeNumber(num) {
               var i, temp = 0;
               for (i = 2; i < num; i++) {
                      if (num % i == 0) {
@@ -250,7 +250,109 @@ module.exports = {
                      return true;
               else
                      return false;
-       }
+       },// getPrimeNumber(num)
+
+
+       /*******************************************************************************
+        * 
+        * ************** For  Search Prime Number and Anagram and printing the number in 2d ************************
+        * 
+        * 
+        ***********************************************************************************/
+
+
+
+       getPrimeAnagram(num) {
+              var array = [], prime, i, j, range, arr = [[]];
+
+              var primeArr = [['0-100'], ['100-200'], ['200-300'], ['300-400'],
+              ['400-500'], ['500-600'], ['600-700'], ['700-800'], ['800-900'], ['900-1000']];
+
+
+              var anagramArr = [['0-100'], ['100-200'], ['200-300'], ['300-400'],
+              ['400-500'], ['500-600'], ['600-700'], ['700-800'], ['800-900'], ['900-1000']];
+
+              var str1, str2;
+
+              i = 0;
+              j = 0;
+              range = 100;
+              for (prime = 2; prime <= num; prime++) {
+                     if (this.getPrimeNumber(prime)) {
+
+                            array[i] = prime;
+                            i++;
+
+                     }
+
+              }
+
+              var p = 0;
+              for (i = 0; i < array.length - 1; i++) {
+
+                     anagramArr[i] = []
+
+                     for (j = i + 1; j < array.length; j++) {
+                            if (aUl.findAnagram(array[i], array[j])) {
+                                   if (array[i] < range && array[j] < range) {
+
+                                      str1 = array[i]+'  '+array[j];
+                                      arr[p] = str1 ;
+
+
+                                   } else {
+                                          p++;
+                                          range += 100;
+                                          
+                                          if (array[j] <= range) {
+                                                 str1 = array[i]+'  '+array[j];
+                                                 arr[p] = str1 ;
+                                          }
+                                   }
+
+                            }
+                     }
+              }
+              console.log("Anagram prime numbers are: ");
+              for ( i = 0; i < 10; i++) {
+          
+                  console.log(arr[i]);
+              }
+
+              // console.log("The Anagram numbers are presents in the given range ");
+              // console.log();
+              // for (i = 0; i < anagramArr.length; i++) {
+              //        up.print('[ ');
+              //        for (j = 0; j < anagramArr[i].length; j++) {
+              //               if (j == 0) {
+              //                      up.print('[ ' + anagramArr[i][j] + " ] ------>  ");
+              //                      //  array.pop();
+              //               } else {
+              //                      up.print(anagramArr[i][j] + " ");
+              //               }
+              //        }
+              //        console.log(' ]');
+              // }
+
+
+              // console.log("The non- Anagram numbers are presents in the given range ");
+              // console.log();
+              // for (i = 0; i < primeArr.length; i++) {
+              //        up.print('[ ');
+              //        for (j = 0; j < primeArr[i].length; j++) {
+              //               if (j == 0) {
+              //                      up.print('[ ' + primeArr[i][j] + " ] ------>  ");
+              //                      //  array.pop();
+              //               } else {
+              //                      up.print(primeArr[i][j] + " ");
+              //               }
+              //        }
+              //        console.log(' ]');
+              // }
+
+
+       },//getPrimeAnagram(num)
+
 
 }
 
