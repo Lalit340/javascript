@@ -1,0 +1,22 @@
+{
+    "company": [
+        {
+            "name": "IBM",
+            "symbol" : "W",
+            "share": "65",
+            "price": "2500"
+        },
+        {
+            "name": "Accenture",
+            "symbol" : "Ac",
+            "share": "70",
+            "price": "2000"
+        },
+        {
+            "name": "TATA",
+            "symbol" : "T",
+            "share": "40",
+            "price": "1500"
+        }
+    ]
+}

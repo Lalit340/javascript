@@ -1,0 +1,19 @@
+{
+    "Stock": [
+        {
+            "name": "IBM",
+            "share": "65",
+            "price": "2500"
+        },
+        {
+            "name": "Accenture",
+            "share": "70",
+            "price": "2000"
+        },
+        {
+            "name": "TATA",
+            "share": "40",
+            "price": "1500"
+        }
+    ]
+}

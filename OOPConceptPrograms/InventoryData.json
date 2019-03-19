@@ -1,19 +1,53 @@
 {
-    "Rice" : [ 
-        { "name" : "India Gate" , "weight" : "1" ,"price" : "85" } ,
-        { "name" : "Basmati " , "weight" : "1" ,"price" : "80" } ,
-        { "name" : "Brow rice" , "weight" : "1" ,"price" : "95" } 
+    "Rice": [
+        {
+            "name": "India Gate",
+            "weight": "1",
+            "price": "85"
+        },
+        {
+            "name": "Basmati ",
+            "weight": "1",
+            "price": "80"
+        },
+        {
+            "name": "Brow rice",
+            "weight": "1",
+            "price": "95"
+        }
     ],
-
-    "Pulses" : [
-        {  "name" : "Lupins" , "weight" : "1" , "price" : "60"},
-        {  "name" : "dry peas" , "weight" : "1" , "price" : "70"},
-        {  "name" : "dry beans" , "weight" : "1" , "price" : "55"}
-    ] ,
-
-    "Wheats" : [
-        {  "name" : "einkorn" , "weight" : "1" , "price" : "60"},
-        {  "name" : "spelt" , "weight" : "1" , "price" : "55"},
-        {  "name" : "common wheats" , "weight" : "1" , "price" : "40"}
+    "Pulses": [
+        {
+            "name": "Lupins",
+            "weight": "1",
+            "price": "60"
+        },
+        {
+            "name": "dry peas",
+            "weight": "1",
+            "price": "70"
+        },
+        {
+            "name": "dry beans",
+            "weight": "1",
+            "price": "55"
+        }
+    ],
+    "Wheats": [
+        {
+            "name": "einkorn",
+            "weight": "1",
+            "price": "60"
+        },
+        {
+            "name": "spelt",
+            "weight": "1",
+            "price": "55"
+        },
+        {
+            "name": "common wheats",
+            "weight": "1",
+            "price": "40"
+        }
     ]
 }
