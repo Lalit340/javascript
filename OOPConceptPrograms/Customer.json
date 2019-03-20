@@ -1,0 +1,14 @@
+{
+    "customer": [
+        {
+            "cumName": "Raja",
+            "share": 57,
+            "price": 4000
+        },
+        {
+            "cumName": "Ramesh",
+            "share": 42,
+            "price": 3000
+        }
+    ]
+}
