@@ -8,7 +8,6 @@
  * @Since   :: 20-03-19
  ****************************************************************/
 
-var ul = require('./Utility');
 var rd = require('readline-sync');
 var up = require('util');
 var file = require('fs');
@@ -39,36 +38,36 @@ class StockAccount extends Customer {
         console.log("#Commercial Data Processing");
         console.log('1. company updation ');
         console.log('2. customer Updation ');
-     try{
-        num = rd.questionInt('Choose a above number :: ');
-        if (num < 1 || num > 2)
-            throw 'Choose a Currect Number ';
+        try {
+            num = rd.questionInt('Choose a above number :: ');
+            if (num < 1 || num > 2)
+                throw 'Choose a Currect Number ';
 
-        switch (num) {
-            case 1: console.log('#Company portal');
-                console.log('1. Add company ');
-                console.log('2. List of companies ');
-                comNo = rd.questionInt('Choose a above number ::');
-                if (comNo < 1 || comNo > 2)
-                    throw 'Choose a Currect Number ';
-                //calling the company portal method
-                stock.companyPortal(comNo);
+            switch (num) {
+                case 1: console.log('#Company portal');
+                    console.log('1. Add company ');
+                    console.log('2. List of companies ');
+                    comNo = rd.questionInt('Choose a above number ::');
+                    if (comNo < 1 || comNo > 2)
+                        throw 'Choose a Currect Number ';
+                    //calling the company portal method
+                    stock.companyPortal(comNo);
 
-                break;
+                    break;
 
-            case 2: console.log('#Customer portal');
-                console.log('1. New User/Customer ');
-                console.log('2. Old customer / Sign in  ');
-                comNo = rd.questionInt('Choose a above number ::');
-                if (comNo < 1 || comNo > 2)
-                    throw 'Choose a Currect Number ';
-                //calling Customer Portal method
-                stock.customerPortal(comNo);
-                break;
+                case 2: console.log('#Customer portal');
+                    console.log('1. New User/Customer ');
+                    console.log('2. Old customer / Sign in  ');
+                    comNo = rd.questionInt('Choose a above number ::');
+                    if (comNo < 1 || comNo > 2)
+                        throw 'Choose a Currect Number ';
+                    //calling Customer Portal method
+                    stock.customerPortal(comNo);
+                    break;
+            }
+        } catch (err) {
+            console.log(err);
         }
-    }catch(err){
-        console.log(err);
-    }
 
     }
 
@@ -255,14 +254,14 @@ class StockAccount extends Customer {
         }
 
         if (flag == true) {
-            this.sellStock(custName , data);
-           
+            this.sellStock(custName, data);
+
         } else
             console.log('Company not found ');
     }
 
-    sellStock(custName , data) {
-        let symbol, i, key, check, num ,cusImfo ,CusData ;
+    sellStock(custName, data) {
+        let symbol, i, key, check, num, cusImfo, CusData;
         symbol = rd.question('Enter the company symbol which share you want to sold ::');
         check = false;
 
@@ -285,7 +284,7 @@ class StockAccount extends Customer {
                 if (CusData.customer[key].cumName == custName) {
                     if (num <= CusData.customer[key].share) {
                         CusData.customer[key].share -= num;
-                       data.company[i].share += num;
+                        data.company[i].share += num;
                         return data.company[i].symbol;
                     }
                 }
