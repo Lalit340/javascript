@@ -23,6 +23,7 @@ class StackStock {
         customer = file.readFileSync('Customer.json');
         this.cust = JSON.parse(customer);
         this.stack = new stk.Stack();
+        this.count = 0;
     }
 }
 
@@ -68,7 +69,7 @@ class StockStack extends StackStock {
 
     buyShare() {
         let custName, temp = 0, key, comName;
-        let symbol, flag ,sym;
+        let symbol, flag, sym;
         custName = rd.question('Enter a  customer name :: ');
         for (key in this.cust.customer) {
             if (this.cust.customer[key].cumName == custName)
@@ -93,7 +94,7 @@ class StockStack extends StackStock {
 
         if (flag == true) {
             this.buyStock(custName);
-            this.stack.push(symbol +"'s company share bought ");
+            this.stack.push(++this.count + '.  Transaction ' + symbol + "'s company share bought ");
             this.addStock();
         } else
             console.log('Company not found ');
@@ -132,7 +133,7 @@ class StockStack extends StackStock {
 
     sellShare() {
         let custName, temp = 0, key, comName;
-        let symbol, flag ,sym;
+        let symbol, flag, sym;
         custName = rd.question('Enter a  customer name :: ');
         for (key in this.cust.customer) {
             if (this.cust.customer[key].cumName == custName)
@@ -155,7 +156,7 @@ class StockStack extends StackStock {
 
         if (flag == true) {
             this.sellStock(custName);
-            this.stack.push(symbol + "'s company share Sold ");
+            this.stack.push(++this.count + '.  Transaction ' + symbol + "'s company share Sold ");
             this.addStock();
         } else
             console.log('Company not found ');
@@ -221,7 +222,12 @@ class StockStack extends StackStock {
     }
 
     printStack() {
-        console.log(this.stack.print());
+        let len = this.stack.getSize() ,n =1;
+
+        while (n <= len) {
+            console.log(this.stack.pop());
+            n++;
+        }
         this.addStock();
     }
 
