@@ -34,7 +34,7 @@ class StockLinkedList extends Stock {
 
         console.log('1. add \n2. delete \n3. display \n4. Save ');
         num = rd.questionInt('choose one of the above number ::');
-        while (num <= 4) {
+        
             switch (num) {
                 case 1: this.addObject();
                     return this.stockList();
@@ -44,17 +44,18 @@ class StockLinkedList extends Stock {
                     return this.stockList();
                     break;
 
-                case 1: this.display();
+                case 3: this.display();
                     return this.stockList();
                     break;
 
-                case 1: this.save();
+                case 4: this.save();
                     return this.stockList();
                     break;
+
+                default :console.log("Choose a valid Number ::");    
             }
 
-        }
-        console.log("Choose a valid Number ::");
+      
         this.stockList();
     }
 

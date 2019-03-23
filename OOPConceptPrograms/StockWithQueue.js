@@ -31,7 +31,7 @@ class StockQueue extends QueueStock {
 
     addStock() {
         let num;
-        console.log('1. buy share \n2. sell share \n3. print company \n4. print customer \n5. save \n6. print stack ');
+        console.log('1. buy share \n2. sell share \n3. print company \n4. print customer \n5. save \n6. print Queue ');
         try {
             num = rd.questionInt('Choose one number of above :: ');
             if (num > 6 || num < 1)
@@ -55,7 +55,7 @@ class StockQueue extends QueueStock {
                     case 5: this.save();
 
                         break;
-                    case 5: this.displayQueue()();
+                    case 6: this.displayQueue()();
 
 
                 }
@@ -95,7 +95,7 @@ class StockQueue extends QueueStock {
 
         if (flag == true) {
             this.buyStock(custName);
-            this.queue.enqueue(symbol + 's share bought '+dt.getDate()+'-'+dt.getMonth()+'-'+dt.getFullYear()+'  and time is '+dt.getHours()+':'+dt.getMinutes());
+            this.queue.enqueue(symbol + "'s companies share bought of date "+dt.getDate()+'-'+dt.getMonth()+'-'+dt.getFullYear()+'  and time is '+dt.getHours()+':'+dt.getMinutes());
             this.addStock();
         } else
             console.log('Company not found ');
@@ -158,7 +158,7 @@ class StockQueue extends QueueStock {
 
         if (flag == true) {
             this.sellStock(custName);
-            this.queue.enqueue(symbol + 's share bought '+dt.getDate()+'-'+dt.getMonth()+'-'+dt.getFullYear()+'  and time is '+dt.getHours()+':'+dt.getMinutes());
+            this.queue.enqueue(symbol + "'s companies share bought of date"+dt.getDate()+'-'+dt.getMonth()+'-'+dt.getFullYear()+'  and time is '+dt.getHours()+':'+dt.getMinutes());
             this.addStock();
         } else
             console.log('Company not found ');

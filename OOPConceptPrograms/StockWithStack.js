@@ -54,7 +54,7 @@ class StockStack extends StackStock {
                     case 5: this.save();
 
                         break;
-                    case 5: this.printStack();
+                    case 6: this.printStack();
 
 
                 }
@@ -68,7 +68,7 @@ class StockStack extends StackStock {
 
     buyShare() {
         let custName, temp = 0, key, comName;
-        let symbol, flag;
+        let symbol, flag ,sym;
         custName = rd.question('Enter a  customer name :: ');
         for (key in this.cust.customer) {
             if (this.cust.customer[key].cumName == custName)
@@ -93,7 +93,7 @@ class StockStack extends StackStock {
 
         if (flag == true) {
             this.buyStock(custName);
-            this.stack.push(symbol + 's share bought ');
+            this.stack.push(symbol +"'s company share bought ");
             this.addStock();
         } else
             console.log('Company not found ');
@@ -132,7 +132,7 @@ class StockStack extends StackStock {
 
     sellShare() {
         let custName, temp = 0, key, comName;
-        let symbol, flag;
+        let symbol, flag ,sym;
         custName = rd.question('Enter a  customer name :: ');
         for (key in this.cust.customer) {
             if (this.cust.customer[key].cumName == custName)
@@ -155,7 +155,7 @@ class StockStack extends StackStock {
 
         if (flag == true) {
             this.sellStock(custName);
-            this.stack.push(symbol + 's share Sold ');
+            this.stack.push(symbol + "'s company share Sold ");
             this.addStock();
         } else
             console.log('Company not found ');
@@ -221,7 +221,7 @@ class StockStack extends StackStock {
     }
 
     printStack() {
-        this.stack.print();
+        console.log(this.stack.print());
         this.addStock();
     }
 
