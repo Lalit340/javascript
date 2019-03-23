@@ -10,15 +10,18 @@
 var rd = require('readline-sync');
 var up = require('util');
 var file = require('fs');
-var ul = require('./Utility');
+//var ul = require('./Utility');
+
+var clc = require('./Clinic');
 
 
 function cliniqueRecord(){
-   let data , object ;
+   let data , object , clinic;
    try{
+       clinic = new clc.Clinic();
        data = file.readFileSync('Clinique.json');
        object = JSON.parse(data);
-       ul.getCliniqueRecords(object);
+       clinic.getCliniqueRecords(object);
    }catch(err){
        console.log(err);
    }
